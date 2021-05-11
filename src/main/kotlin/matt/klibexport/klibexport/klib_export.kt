@@ -99,6 +99,9 @@ typealias D = Double
 
 
 infix fun <T> MutableCollection<T>.setAll(c: Collection<T>) {
+  /*when (this) {
+    is ObservableList<T>
+  }*/
   clear()
   c.forEach { add(it) }
 }
