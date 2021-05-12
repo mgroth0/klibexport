@@ -1,5 +1,6 @@
 package matt.klibexport.klibexport
 
+import matt.klib.Searchable
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -12,6 +13,7 @@ interface Identified {
 
 interface Named {
   var name: String
+
 }
 
 open class Unique(
@@ -63,7 +65,6 @@ fun <T: Any, R> T.search(
   } while (next != null)
   return null
 }
-
 
 
 @ExperimentalContracts
