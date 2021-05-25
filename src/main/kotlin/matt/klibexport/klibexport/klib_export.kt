@@ -1,6 +1,5 @@
 package matt.klibexport.klibexport
 
-import matt.klib.Searchable
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -108,15 +107,23 @@ infix fun <T> MutableCollection<T>.setAll(c: Collection<T>) {
 }
 
 
-fun <T> List<T>.allUnique(): Boolean {
-  forEachIndexed { index1, t1 ->
-	for (t2 in subList(index1 + 1, size)) {
-	  if (t1 == t2) {
-		return false
+fun <E> Collection<E>.allUnique(): Boolean {
+  when (this) {
+	is List<E> -> {
+	  forEachIndexed { index1, t1 ->
+		for (t2 in subList(index1 + 1, size)) {
+		  if (t1 == t2) {
+			return false
+		  }
+		}
 	  }
+	  return true
 	}
+	is Set<E>  -> {
+	  return true
+	}
+	else       -> return toList().allUnique()
   }
-  return true
 }
 
 interface DSL
