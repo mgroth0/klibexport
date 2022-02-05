@@ -1,5 +1,6 @@
 package matt.klibexport.klibexport
 
+import matt.klib.log.warn
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -20,12 +21,15 @@ open class Unique(
   override var id: Int
 ): Identified {
   override fun toString() =
-	  "${this::class.simpleName} $id: $name"
+	"${this::class.simpleName} $id: $name"
 }
 
 fun new_id(
   vararg against: List<Identified>
-): Int = against.flatMap { it }.maxOf { it.id } + 1
+): Int {
+  warn("what if i delete the highest? i need to keep a record of nextID instead of this")
+  return against.flatMap { it }.maxOf { it.id } + 1
+}
 
 
 @ExperimentalContracts
