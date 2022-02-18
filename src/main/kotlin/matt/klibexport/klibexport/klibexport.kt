@@ -117,6 +117,12 @@ fun <E> Collection<E>.allUnique(): Boolean {
 	  forEachIndexed { index1, t1 ->
 		for (t2 in subList(index1 + 1, size)) {
 		  if (t1 == t2) {
+			println("t1 is t2")
+			println("t1:$t1")
+			println("t2:$t2")
+			println("index1:$index1")
+			println("indexOf(t1)=${this.indexOf(t1)}")
+			println("indexOf(t2)=${this.indexOf(t2)}")
 			return false
 		  }
 		}
