@@ -136,6 +136,16 @@ fun <E> Collection<E>.allUnique(): Boolean {
   }
 }
 
+fun <E> Collection<E>.allSame(): Boolean {
+  if (this.size <= 1) {
+	return true
+  } else {
+	val example = this.first()
+	return this.all { it == example }
+  }
+}
+
+
 interface DSL
 
 fun <E> MutableCollection<E>.addIfNotIn(e: E): Boolean {
