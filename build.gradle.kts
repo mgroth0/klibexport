@@ -81,7 +81,7 @@ uploadArchives {
 dependencies {
   /*api(projects.klib)*/
   api(project(mapOf(
-    "path" to ":klib",
+    "path" to ":k:klib",
     "configuration" to "jvmRuntimeElements")))
 }
 
